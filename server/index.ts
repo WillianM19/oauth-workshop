@@ -31,7 +31,6 @@ app.get('/auth/github/callback', async (req: Request, res: Response) => {
     const { code } = req.query;
 
     try {
-        // Troca do código de autorização pelo token de acesso
         const tokenResponse = await axios.post(
             'https://github.com/login/oauth/access_token',
             {
@@ -48,15 +47,32 @@ app.get('/auth/github/callback', async (req: Request, res: Response) => {
 
         const accessToken = tokenResponse.data.access_token;
 
-        // Obter informações do usuário
         const userResponse = await axios.get('https://api.github.com/user', {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             },
         });
 
-        // Retorna os dados do usuário como resposta
-        res.json(userResponse.data);
+        const userData = userResponse.data;
+
+        let user = await User.findOne({ where: { githubId: userData.id } });
+
+        if (!user) {
+            user = await User.create({
+                githubId: userData.id,
+                login: userData.login,
+                name: userData.name,
+                avatarUrl: userData.avatar_url,
+            });
+        } else {
+            await user.update({
+                login: userData.login,
+                name: userData.name,
+                avatarUrl: userData.avatar_url,
+            });
+        }
+
+        res.json(user);
     } catch (error) {
         res.status(500).send('Erro na autenticação');
     }
