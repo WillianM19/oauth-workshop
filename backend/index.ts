@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express';
 import axios from 'axios';
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
+import { sequelize, User } from './models/User';
 
 dotenv.config();
 
@@ -17,19 +19,9 @@ app.get('/auth/github', (req: Request, res: Response) => {
     res.redirect(redirectUri);
 });
 
-// Banco
-import { sequelize, User } from './models/User';
-
-// Sincronizar o banco de dados
-sequelize.sync().then(() => {
-    console.log('Banco de dados sincronizado');
-});
-
-
 // Callback
 app.get('/auth/github/callback', async (req: Request, res: Response) => {
     const { code } = req.query;
-
     try {
         const tokenResponse = await axios.post(
             'https://github.com/login/oauth/access_token',
@@ -64,18 +56,17 @@ app.get('/auth/github/callback', async (req: Request, res: Response) => {
                 name: userData.name,
                 avatarUrl: userData.avatar_url,
             });
-        } else {
-            await user.update({
-                login: userData.login,
-                name: userData.name,
-                avatarUrl: userData.avatar_url,
-            });
         }
 
-        res.json(user);
+        res.redirect(`http://localhost:3000/?user=${user.name}`);
     } catch (error) {
+        console.error('Erro na autenticação:', error);
         res.status(500).send('Erro na autenticação');
     }
+});
+
+sequelize.sync().then(() => {
+    console.log('Banco de dados sincronizado');
 });
 
 app.listen(port, () => {

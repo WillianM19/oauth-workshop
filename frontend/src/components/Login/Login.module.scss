@@ -1,0 +1,78 @@
+.login {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('/assets/login-background.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .login__main{
+        position: relative;
+        z-index: 2;
+        background: $background;
+        width: 340px;
+        padding: 1rem;
+        box-shadow: 3px 3px 6px #00000097;
+        border-radius: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .login__main__logo{
+            width: 163px;
+            height: 58px;
+            position: relative;
+        }
+     
+        .login__main__title{
+            font-size: 1rem;
+            font-weight: 400;
+            color: #c1c1c1;
+            margin-left: 1.25rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .login__main__button{
+            width: 100%;
+            height: 40px;
+            margin-top: 1rem;
+            text-decoration: none;
+            background: none;
+            border: 1px solid $chart-border-color;
+            border-radius: 0.365rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            color: #fff;
+            transition: 0.2s;
+
+            &:hover{
+                background: $primary;
+                color: $background;
+                border-color: $primary;
+                transition: 0.2s;
+            }
+        }
+    }
+}
+
+.login::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 1) 100%);
+    z-index: 1;
+    backdrop-filter: blur(4.5px); 
+    
+}

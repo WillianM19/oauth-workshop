@@ -1,0 +1,56 @@
+.list {
+    width: 300px;
+    border: 1px solid $chart-border-color;
+    border-radius: 0.5rem;
+
+    a {
+        display: flex;
+        color: $primary;
+        font-size: 0.865rem;
+        margin-left: auto;
+        margin-right: 16px;
+        width: max-content;
+        cursor: pointer;
+        margin-top: 14px;
+    }
+
+    ul {
+        width: 100%;
+        height: 300px;
+        overflow-y: auto;
+
+        li {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        li+li {
+            border-top: 1px solid $chart-border-color;
+        }
+    }
+
+    .list__tag{
+        background: #9c9c9c;
+        color: #454545;
+        padding: 0.1rem 0.25rem;
+        font-size: 0.865rem;
+        border-radius: 0.125rem;
+    }
+
+    .list__tag--urgent{
+        background: rgb(255, 165, 165);
+        color: rgb(250, 7, 7);
+    }
+
+    .list__tag--medium{
+        background: rgb(255, 220, 139);
+        color: rgb(224, 158, 3);
+    }
+    
+    .list__tag--low{
+        background: rgb(145, 186, 255);
+        color: rgb(26, 110, 255);
+    }
+}

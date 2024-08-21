@@ -1,0 +1,49 @@
+.user-navbar{
+    height: 100%;
+    position: relative;
+
+    summary{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        height: 100%;
+        padding: 0 0.75rem;
+        
+        border-left: 1px solid $header-border-color;
+        border-right: 1px solid $header-border-color;
+    
+        strong{
+            font-size: 1rem;
+        }
+    }
+
+
+    ul{
+        position: absolute;
+        top: calc(100%);
+        border: 1px solid $header-border-color;
+        width: 100%;
+        background: $background;
+        z-index: 1000;
+        border-radius: 0 0 4px 4px;
+
+        li{
+            padding: 0.75rem;
+            font-size: 0.865rem;
+            line-height: 125%;
+            display: flex;
+            align-items: center;
+            gap: 0.365rem;
+            transition: 0.2s;
+            cursor: pointer;
+            
+            &:hover{
+                transition: 0.2s;
+                color: $primary;
+            }
+        }
+
+    }
+   
+}

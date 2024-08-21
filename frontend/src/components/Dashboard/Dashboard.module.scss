@@ -1,0 +1,30 @@
+.dashboard{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+
+    main{
+        width: 100%;
+        max-width: 1280px;
+
+        h2{
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.75rem;
+        }
+
+        .dashboard__row{
+            display: flex;
+            margin-top: 1.5rem;
+
+            & > :nth-child(1) {
+                border-radius:  0.5rem 0 0 0.5rem ;
+            }
+
+            & > :nth-child(2) {
+                border-radius: 0 0.5rem 0.5rem 0;
+            }
+        }
+    }
+}

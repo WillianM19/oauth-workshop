@@ -1,0 +1,31 @@
+.line-chart{
+    flex: 1;
+    border: 1px solid $chart-border-color;
+    padding: 1rem 0 0.5rem ;
+    border-radius: 0.5rem;
+
+    header{
+        padding: 0 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .line-chart__title{
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: $primary;
+        }
+        .line-chart__last-month{
+            font-size: 0.865rem;
+            color: #d7d7d7;
+
+            b{
+                font-weight: 600;
+            }
+        }
+        
+    }
+}
+
+
+ 
